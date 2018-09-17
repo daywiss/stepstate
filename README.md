@@ -34,12 +34,12 @@ also can store past state transition.
   }
 ```
 
-## State Machine Steps
-State machine steps require user defined functions to describe how state is handled at each state, transitioned and ended.
-Transitions are returned as a string. If nothing is returned, the state will not change. State termination is signified
-but setting "done=true" on the stateful object. Once done, the object will no longer be sent through the state machine.
-Handlers can be async promises. Muating object can cause side effects, its recommended you clone it before
-passing in. 
+## State Machine Handlers
+State machine step handlers require user defined functions to describe how state is handled at each state,
+transitioned and ended.  Transitions are returned as a string. If nothing is returned, the state will not change.
+State termination is signified but setting "done=true" on the stateful object. Once done, the object will no 
+longer be sent through the state machine.  Handlers can be async promises. Muating object can cause side effects, 
+its recommended you clone it before passing in. 
 
 ```js
   //you can return the next state
@@ -191,6 +191,8 @@ Create an instance of your "step" function with your states.
 
 `const step = Steps(stateHandlers)`
 
+**function(object:stateHandlers) => async function(object:statefulObject, ...arguments)**
+
 * stateHandlers:object - an object containing keys of state names and functions for values. See [State Handlers](#state-handlers)
 
 ```js
@@ -250,8 +252,11 @@ error will be thrown.
 * return => Return nothing, a string to transition to a new state, or the original data object.
 
 ### Step 
-Once you have a step function instance, call it with a stateful object as first parameter. Other 
+This is an async function. Once you have a step function instance,
+call it with a stateful object as first parameter. Other 
 arguments will be passed through to your state handlers.
+
+**async function(object:statefulObject, ...arguments) => object:statefulObject**
 
 Call the step function with these parameters
 * data: stateful object - Your stateful data object which you want to transition to the next step.
@@ -288,6 +293,7 @@ This library has a helper function to create a default state compatible with the
 A stateful object is just a regular js object with some extra properties: `state`, `history`, `done`, `updated`
 
 **Object**
+
 ```js
 {
   state:string,
