@@ -1,7 +1,7 @@
 {
   "name": "stepstate",
   "version": "0.0.1",
-  "description": "A convention for defining stateful attributes and a small functional framework",
+  "description": "Small function framework with conventions to process state transitions and stateful objects",
   "main": "index.js",
   "dependencies": {
     "tape": "^4.9.1"
