@@ -183,7 +183,7 @@ of how to provide that within this framework.
     }
   }
 
-  const step = Step(steps(Context))
+  const step = Steps(steps(Context))
 
 ```
 
@@ -278,7 +278,7 @@ Call the step function with these parameters
      //when done == true your object is done being processed by this state machine
     while(!statefulObject.done){
       //calling step with stateful object and some random data which is passed through
-      statefulObject = async step(statefulObject,Date.now(),'test')
+      statefulObject = await step(statefulObject,Date.now(),'test')
     }
   }
 
