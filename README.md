@@ -1,7 +1,11 @@
 # Steps (Finite State Machine Framework)
 A convention for defining stateful attributes and a small functional framework
 for stepping stateful objects through a finite state machine which you define.
-  
+
+
+## Install
+`npm install --save steps`
+
 ## Philosophy of Use
 A finite state machine is a good way to define complex data transitions. 
 This framework allows you to use a regular object and provides a concise way to 
