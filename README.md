@@ -1,10 +1,13 @@
-# Steps (Finite State Machine Framework)
+# StepState (Finite State Machine Framework)
 A convention for defining stateful attributes and a small functional framework
 for stepping stateful objects through a finite state machine which you define.
 
 
 ## Install
-`npm install --save steps`
+`npm install --save stepstate`
+
+## Include
+`const Steps= require('stepstate')`
 
 ## Philosophy of Use
 A finite state machine is a good way to define complex data transitions. 
@@ -46,6 +49,8 @@ longer be sent through the state machine.  Handlers can be async promises. Muati
 its recommended you clone it before passing in. 
 
 ```js
+  const Steps = require('stepstate')
+
   //you can return the next state
   //or set obj.state = 'NextState'
   //and return object
@@ -200,7 +205,7 @@ Create an instance of your "step" function with your states.
 * stateHandlers:object - an object containing keys of state names and functions for values. See [State Handlers](#state-handlers)
 
 ```js
-  const Steps = require('steps')
+  const Steps = require('stepstate')
 
   const steps = {
     'Start': x=> {

@@ -1,5 +1,5 @@
 {
-  "name": "steps",
+  "name": "stepstate",
   "version": "0.0.1",
   "description": "A convention for defining stateful attributes and a small functional framework",
   "main": "index.js",
