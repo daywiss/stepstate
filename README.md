@@ -232,7 +232,7 @@ If any state handler has an uncaught error, you can intercept it with the `catch
 word within this framework, so your object states should not use `catch`. If no catch state is supplied
 error will be thrown.
 
-** function (error, object) => string **
+**function (error, object) => string**
 * error: Error object - This is the error which was thrown
 * object: Stateful object - This is the object state which caused the error
 * return => Return nothing, or a string to transition to a new state. 
