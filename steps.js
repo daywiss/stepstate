@@ -23,7 +23,7 @@ module.exports = (handlers) => {
       state.updated = Date.now()
       transition =  await handlers[state.state](state,...args)
     }catch(e){
-      transition = await handlers.catch(e,state)
+      transition = await handlers.catch(e,state,...args)
     }
     if(transition === state) return state
 

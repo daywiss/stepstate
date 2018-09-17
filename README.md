@@ -191,7 +191,7 @@ Create an instance of your "step" function with your states.
 
 `const step = Steps(stateHandlers)`
 
-* stateHandlers:object - an object containing keys of state names and functions for values. See [State Handlers](#State-Handlers)
+* stateHandlers:object - an object containing keys of state names and functions for values. See [State Handlers](#state-handlers)
 
 ```js
   const Steps = require('steps')
@@ -213,10 +213,17 @@ Create an instance of your "step" function with your states.
 
 ### State Handlers
 You must create state handlers to pass into the Steps framework. These handlers have a specific interface they must conform to
-in order for them to be compatible with the framework.
+in order for them to be compatible with the framework. Handlers can return string, nothing or the data object, 
 
 Steps follow this pattern:
 * object['string'] = async function(data, ...arguments)
+
+Each function has these parameters
+**function (object,...arguments) => string | undefined**
+* data : stateful object - Your stateful data object. You should mutate this as needed, and set done=true when the data no longer needs to run in state machine.
+* ...arguments : any - any arguments you passed in along with your data when calling [step](#step)
+* return => Return nothing, a string representing the state name to transition to, or the original data object.
+
 
 ```js
 const handlers = {
@@ -232,17 +239,11 @@ If any state handler has an uncaught error, you can intercept it with the `catch
 word within this framework, so your object states should not use `catch`. If no catch state is supplied
 error will be thrown.
 
-** function (error, object) => string **
+**function (error, object, ...arguments) => string | undefined**
 * error: Error object - This is the error which was thrown
 * object: Stateful object - This is the object state which caused the error
-* return => Return nothing, or a string to transition to a new state. 
-
-
-
-Each function has these parameters
-* data : stateful object - Your stateful data object. You should mutate this as needed, and set done=true when the data no longer needs to run in state machine.
-* ...arguments : any - any arguments you passed in along with your data when calling [step](#Step)
-
+* ...arguments: any - Arguments passed into the step function
+* return => Return nothing, a string to transition to a new state, or the original data object.
 
 ### Step 
 Once you have a step function instance, call it with a stateful object as first parameter. Other 
@@ -272,14 +273,14 @@ Call the step function with these parameters
 
 ```
 
-### Default State
+### Creating Default Stateful Object
 This library has a helper function to create a default state compatible with the Step framework.
 
 **Steps.State(data) => stateful object**
 * data:object - a non stateful object
-* returns:stateful object =>  which will be returned with added stateful data.
+* returns:stateful object =>  which will be returned with merged stateful data.
 
-### Stateful Object
+### Stateful Object Schema
 A stateful object is just a regular js object with some extra properties: `state`, `history`, `done`, `updated`
 
 **Object**
