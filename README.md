@@ -17,7 +17,7 @@ iteratively until your state reaches its terminating point which can be read as 
 "done" data attribute. Outside of the "state", "done", "history" attributes, you can
 include any other custom data you need for your transitions.
 
-## State Schema
+## Stateful Object Schema
 As long as your objects conform to the following interface, they can be transitioned
 in the state machine handlers. We propose a very minimal data structure which
 also can store past state transition. 
