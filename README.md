@@ -1,4 +1,4 @@
-# StepState (Finite State Machine Framework)
+# Stepstate (Finite State Machine Framework)
 A convention for defining stateful attributes and a small functional framework
 for stepping stateful objects through a finite state machine which you define.
 
@@ -193,7 +193,7 @@ of how to provide that within this framework.
 ```
 
 ## API
-Defines how to use the Steps API.
+Defines how to use the Stepstate API.
 
 ### Initialization
 Create an instance of your "step" function with your states.
