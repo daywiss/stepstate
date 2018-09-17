@@ -1,0 +1,39 @@
+{
+  "name": "steps",
+  "version": "0.0.1",
+  "description": "A convention for defining stateful attributes and a small functional framework",
+  "main": "index.js",
+  "dependencies": {
+    "tape": "^4.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/daywiss/steps.git"
+  },
+  "keywords": [
+    "fsm",
+    "statemachine",
+    "stateful",
+    "state",
+    "machine",
+    "finite",
+    "state",
+    "machine",
+    "step",
+    "state",
+    "state",
+    "transition",
+    "state",
+    "framework"
+  ],
+  "author": "daywiss@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daywiss/steps/issues"
+  },
+  "homepage": "https://github.com/daywiss/steps#readme"
+}
