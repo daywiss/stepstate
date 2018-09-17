@@ -215,11 +215,14 @@ Create an instance of your "step" function with your states.
 You must create state handlers to pass into the Steps framework. These handlers have a specific interface they must conform to
 in order for them to be compatible with the framework. Handlers can return string, nothing or the data object, 
 
-Steps follow this pattern:
-* object['string'] = async function(data, ...arguments)
+State handler object follow this pattern:
+
+**object['string'] = async function(data, ...arguments)**
 
 Each function has these parameters
-**function (object,...arguments) => string | undefined**
+
+**async function (object,...arguments) => string | undefined**
+
 * data : stateful object - Your stateful data object. You should mutate this as needed, and set done=true when the data no longer needs to run in state machine.
 * ...arguments : any - any arguments you passed in along with your data when calling [step](#step)
 * return => Return nothing, a string representing the state name to transition to, or the original data object.
@@ -240,6 +243,7 @@ word within this framework, so your object states should not use `catch`. If no 
 error will be thrown.
 
 **function (error, object, ...arguments) => string | undefined**
+
 * error: Error object - This is the error which was thrown
 * object: Stateful object - This is the object state which caused the error
 * ...arguments: any - Arguments passed into the step function
