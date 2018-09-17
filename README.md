@@ -198,7 +198,11 @@ Defines how to use the Steps API.
 ### Initialization
 Create an instance of your "step" function with your states.
 
-`const step = Steps(stateHandlers)`
+```js
+const Steps= require('stepstate')
+const step = Steps(stateHandlers)
+```
+
 
 **function(object:stateHandlers) => async function(object:statefulObject, ...arguments)**
 
